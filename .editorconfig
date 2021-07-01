@@ -1,0 +1,8 @@
+# https://EditorConfig.org
+
+root = true
+
+[*.{java,kt,gradle,xml}]
+charset = utf-8
+indent_style = space
+indent_size = 2

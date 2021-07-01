@@ -1,0 +1,18 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+jar {
+  manifest {
+    attributes('Lint-Registry-v2': 'io.noties.stopship.lint.StopShipLintRegistry')
+  }
+}
+
+dependencies {
+  compileOnly deps['kotlin-stdlib']
+
+  final def lint_version = '26.6.4'
+  compileOnly "com.android.tools.lint:lint-api:$lint_version"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8

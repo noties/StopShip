@@ -1,0 +1,36 @@
+buildscript {
+    ext.kotlin_version = "1.4.21"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+  version = VERSION_NAME
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+  config = [
+    'sdk-min': 21,
+    'sdk-target': 30,
+    'build-tools': '30.0.3',
+    'publish-aar': 'https://raw.githubusercontent.com/noties/gradle-mvn-push/master/gradle-mvn-push-aar.gradle'
+  ]
+
+  deps = [
+    'kotlin-stdlib': "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  ]
+}

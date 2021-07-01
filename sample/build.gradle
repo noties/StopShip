@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion config['sdk-target']
+  buildToolsVersion config['build-tools']
+
+  defaultConfig {
+    applicationId 'io.noties.stopship.sample'
+    minSdkVersion config['sdk-min']
+    targetSdkVersion config['sdk-target']
+    versionCode 1
+    versionName version
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  lintOptions {
+    // marks stop-ship comment as fatal (prevents it being bundled with release builds)
+    fatal 'StopShip'
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles './proguard.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation deps['kotlin-stdlib']
+  implementation project(':stopship')
+  implementation 'io.noties:debug:5.1.0'
+}

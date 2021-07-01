@@ -1,0 +1,4 @@
+include ':stopship-lint'
+include ':stopship'
+include ':sample'
+rootProject.name = "StopShip"

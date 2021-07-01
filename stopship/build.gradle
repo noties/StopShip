@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion config['sdk-target']
+    buildToolsVersion config['build-tools']
+
+    defaultConfig {
+        minSdkVersion config['sdk-min']
+        targetSdkVersion config['sdk-target']
+        versionCode 1
+        versionName version
+    }
+
+  compileOptions {
+    targetCompatibility JavaVersion.VERSION_1_7
+    sourceCompatibility JavaVersion.VERSION_1_7
+  }
+
+  libraryVariants.all {
+    it.generateBuildConfigProvider.configure { enabled = false }
+  }
+}
+
+dependencies {
+  compileOnly deps['kotlin-stdlib']
+
+  lintPublish project(':stopship-lint')
+}
+
+if (project.hasProperty('release')) {
+  apply from: config['publish-aar']
+}
