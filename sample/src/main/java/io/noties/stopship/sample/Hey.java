@@ -3,6 +3,7 @@ package io.noties.stopship.sample;
 import io.noties.debug.Debug;
 
 import static io.noties.stopship.StopShip._stopShip;
+import static io.noties.stopship.StopShip.stopShip;
 
 class Hey {
 
@@ -15,5 +16,11 @@ class Hey {
     })) return;
 
     Debug.i("after stopship");
+  }
+
+  void hey2() {
+stopShip(() -> {
+
+});
   }
 }

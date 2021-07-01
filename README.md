@@ -3,6 +3,10 @@
 A convenience utility around Android's `STOPSHIP` functionality with build-in Lint support. 
 Kotlin and Java supported.
 
+```groovy
+implementation 'io.noties:stopship:1.0.0'
+```
+
 Some code might be added for runtime debugging or testing purposes. And it must not be shipped.
 Imagine mocked credentials, altered behaviour or fake data. These must be removed from the application
 before a release.
@@ -81,7 +85,7 @@ fun someMethod() {
 ## Java
 
 In Java there is no way to create a code block with a return functionality as in Kotlin. So
-the usage is a bit different:
+the usage is a bit different (if an early return is required):
 
 ```java
 // NB! the static import
@@ -111,6 +115,14 @@ void someMethod() {
   
   // original mettod
 }
+```
+
+If there is no need for an early return, then code can be simplified to:
+
+```java
+stopShip(() -> {
+  doWhatYouHaveToDo();
+});
 ```
 
 ## Proguard / R8
